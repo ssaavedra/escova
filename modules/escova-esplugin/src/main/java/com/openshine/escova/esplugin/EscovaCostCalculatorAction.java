@@ -6,6 +6,8 @@ import com.openshine.escova.endpoints.Searchv;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import com.typesafe.config.ConfigParseOptions;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.client.node.NodeClient;
 import org.elasticsearch.common.settings.Settings;
@@ -24,10 +26,11 @@ import static org.elasticsearch.rest.action.search.RestSearchAction.parseSearchR
 public class EscovaCostCalculatorAction extends BaseRestHandler {
     private final RestHandler dateParserHandler;
     private final CostConfig costConfig;
+    protected Logger logger = LogManager.getLogger(getClass());
 
     public EscovaCostCalculatorAction(Settings settings, RestController controller) {
-        super(settings);
-        final Environment env = new Environment(settings);
+        super();
+        final Environment env = new Environment(settings, null);
 
         final Config cfg = ConfigFactory.parseFile(
                 env.configFile().resolve("escova").toFile(),
@@ -53,13 +56,17 @@ public class EscovaCostCalculatorAction extends BaseRestHandler {
 
     }
 
+    @Override
+    public String getName() {
+        return "ESCOVA Cost Calculator";
+    }
 
     @Override
     protected RestChannelConsumer prepareRequest(RestRequest request, NodeClient client) throws IOException {
         SearchRequest searchRequest = new SearchRequest();
 
         request.withContentOrSourceParamParserOrNull(parser ->
-                parseSearchRequest(searchRequest, request, parser));
+                parseSearchRequest(searchRequest, request, parser, i -> {}));
 
         return channel -> {
             RestResponse response = Endpoints.java(Searchv.apply(searchRequest.source(), costConfig));

@@ -61,7 +61,7 @@ object ElasticPlugin extends AutoPlugin with ElasticKeys {
       baseDirectory.value / "src" / "main" / "plugin-metadata"
     },
     elasticsearchVersion := System
-      .getProperty("elasticsearch.version", "5.6.3"),
+      .getProperty("elasticsearch.version", "7.6.2"),
     espluginJavaVersion := "1.8",
     espluginHasNativeController := false,
     espluginDescriptorFile := baseDirectory.value / "project" /

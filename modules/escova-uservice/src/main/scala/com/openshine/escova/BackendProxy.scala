@@ -2,7 +2,7 @@ package com.openshine.escova
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.{HttpEntity, HttpResponse, StatusCodes, headers}
+import akka.http.scaladsl.model.{HttpResponse, StatusCodes, headers}
 import akka.http.scaladsl.server.Route
 import akka.stream.Materializer
 import akka.stream.scaladsl.{Sink, Source}

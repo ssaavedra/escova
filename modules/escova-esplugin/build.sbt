@@ -11,10 +11,8 @@ espluginDescription :=
 
 libraryDependencies ++= Seq(
   "com.typesafe" % "config" % "1.3.0",
-  "com.iheart" %% "ficus" % "1.4.3",
-  "org.json4s" %% "json4s-ast" % "3.5.3",
-  "org.json4s" %% "json4s-core" % "3.5.3",
-  "org.json4s" %% "json4s-native" % "3.5.3"
+  "com.iheart" %% "ficus" % "1.4.7",
+  "org.json4s" %% "json4s-native" % "3.6.7"
   // Warning: Do not use Jackson due to dependency hell against
   // elasticsearch
   // as Elasticsearch does not include some jackson modules needed by
@@ -25,6 +23,6 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.0.4" % "test",
-  "org.scalactic" %% "scalactic" % "3.0.4" % "test"
+  "org.scalatest" %% "scalatest" % "3.1.1" % Test,
+  "org.scalactic" %% "scalactic" % "3.1.1" % Test
 )

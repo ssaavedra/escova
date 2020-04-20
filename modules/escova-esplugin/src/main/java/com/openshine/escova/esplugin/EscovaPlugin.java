@@ -22,7 +22,7 @@ import java.util.function.Supplier;
 public class EscovaPlugin extends Plugin implements ActionPlugin {
 
     public EscovaPlugin(Settings settings) {
-        Environment environment = new Environment(settings);
+        Environment environment = new Environment(settings, null);
     }
 
     @Override

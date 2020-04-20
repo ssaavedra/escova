@@ -37,14 +37,11 @@ Elasticsearch-provided gradle configuration.
 
 You just have to use a line like:
 
-    $ sbt "project esplugin" "esplugin 5.6.3" # For elasticsearch 5.6.3
+    $ sbt "project esplugin" "esplugin 7.6.2" # For elasticsearch 7.6.2
 
 Keep in mind that source-level breaking changes happen between
-Elasticsearch 5 and 6, preventing the same codebase to run on both
+Elasticsearch 5, 6, and 6, preventing the same codebase to run on both
 Elasticsearch versions. Use `branch_6.x` to build against ES 6.
-
-In the near future we'll migrate and use `branch_5.x` for ES 5 and
-push `branch_6.x` to master.
 
 After building, an artifact at
 modules/escova-esplugin/target/escova-{version}-for-es-{esversion}.zip

@@ -1,10 +1,8 @@
 name := "escova-akka-uservice"
 
-organization := "com.openshine"
+organization := "eu.ssaavedra"
 
-organizationName := "openshine"
-
-organizationHomepage := Some(url("http://www.openshine.com"))
+organizationName := "ssaavedra"
 
 enablePlugins(GitVersioning)
 enablePlugins(JavaAppPackaging)
@@ -12,9 +10,10 @@ enablePlugins(DockerPlugin)
 
 libraryDependencies ++= Seq(
   "org.elasticsearch" % "elasticsearch" % "5.6.3",
-  "com.typesafe.akka" %% "akka-http" % "10.0.10",
-  "com.typesafe" % "config" % "1.3.0",
-  "com.iheart" %% "ficus" % "1.4.3"
+  "com.typesafe.akka" %% "akka-http" % "10.1.11",
+  "com.typesafe.akka" %% "akka-stream" % "2.5.31",
+  "com.typesafe" % "config" % "1.4.0",
+  "com.iheart" %% "ficus" % "1.4.7"
   // Warning: Do not use Jackson due to dependency hell against
   // elasticsearch
   // as Elasticsearch does not include some jackson modules needed by
@@ -25,9 +24,9 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.0.4" % Test,
-  "org.scalactic" %% "scalactic" % "3.0.4" % Test,
-  "com.typesafe.akka" %% "akka-http-testkit" % "10.1.5" % Test
+  "org.scalatest" %% "scalatest" % "3.1.1" % Test,
+  "org.scalactic" %% "scalactic" % "3.1.1" % Test,
+  "com.typesafe.akka" %% "akka-http-testkit" % "10.1.11" % Test
 )
 
 licenses := Seq(
@@ -37,12 +36,12 @@ licenses := Seq(
 
 developers := List(
   Developer("ssaavedra",
-            "Santiago Saavedra",
-            "@ssaavedra",
-            url("https://github.com/ssaavedra"))
+    "Santiago Saavedra",
+    "@ssaavedra",
+    url("https://gitlab.com/ssaavedra.eu"))
 )
 
 scmInfo := Some(
-  ScmInfo(url("https://github.com/openshine/escova"),
-          "git@github.com:openshine/escova.git")
+  ScmInfo(url("https://gitlab.com/ssaavedra.eu/escova"),
+    "git@gitlab.com:ssaavedra.eu/escova.git")
 )

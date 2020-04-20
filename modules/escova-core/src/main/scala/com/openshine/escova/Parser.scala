@@ -284,7 +284,7 @@ object Parser {
     * @param ag the aggregation builder you want to descend to
     * @return the aggregation builders beneath `ag`
     */
-  def getSubAggregations(ag: AggregationBuilder): Seq[AggregationBuilder] = {
+  def getSubAggregations(ag: AggregationBuilder): collection.Seq[AggregationBuilder] = {
     import implicits._
 
     val factoriesBuilder =

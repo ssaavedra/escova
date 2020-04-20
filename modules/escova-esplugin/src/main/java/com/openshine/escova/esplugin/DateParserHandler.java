@@ -26,7 +26,7 @@ class DateParserHandler implements RestHandler {
         String fieldName = request.param("dateFieldName", "@timestamp");
 
         request.withContentOrSourceParamParserOrNull(parser ->
-                parseSearchRequest(searchRequest, request, parser));
+                parseSearchRequest(searchRequest, request, parser, i -> {}));
 
         RestResponse response = Endpoints.java(
                 ParseDate.apply(searchRequest.source(), fieldName));

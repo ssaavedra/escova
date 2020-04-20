@@ -33,7 +33,7 @@ class DateParserTest extends FlatSpec with Matchers {
     )
 
     val frozenTime = new GregorianCalendar(2018, 4, 2).getTimeInMillis
-    val dates: Seq[DateRange] =
+    val dates: collection.Seq[DateRange] =
       DateParser.analyze(n.source(), "date", () => frozenTime)
 
     // println(dates)

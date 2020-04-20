@@ -46,7 +46,7 @@ object DateParser {
     Joda.forPattern("strict_date_optional_time||epoch_millis", Locale.ROOT)
   val dateParser = new DateMathParser(DEFAULT_DATE_TIME_FORMATTER)
 
-  def analyze(n: SearchSourceBuilder, fieldName: String): Seq[DateRange] =
+  def analyze(n: SearchSourceBuilder, fieldName: String): collection.Seq[DateRange] =
     analyze(n, fieldName, DateParser.now)
 
   def sendResponse(channel: RestChannel,
@@ -78,7 +78,7 @@ object DateParser {
 
   def analyze(n: SearchSourceBuilder,
               fieldName: String,
-              nowProvider: LongSupplier): Seq[DateRange] = {
+              nowProvider: LongSupplier): collection.Seq[DateRange] = {
     implicit val _np: LongSupplier = nowProvider
     val query = Option(n).flatMap { n =>
       Option(n.query())
@@ -91,7 +91,7 @@ object DateParser {
       .flatMap(_.getAggregatorFactories.asScala.toList)
       .foreach(findAggTimes(fieldName))
 
-    val possibleTimes: Seq[FLTuple] =
+    val possibleTimes: collection.Seq[FLTuple] =
       query.map(findQueryTimes(fieldName)).getOrElse(Seq())
 
     if (possibleTimes.isEmpty)
@@ -122,7 +122,7 @@ object DateParser {
     Parser.getSubAggregations(agg).foreach(findAggTimes(fieldName))
   }
 
-  def findQueryTimes(fieldName: String): QueryBuilder => Seq[FLTuple] = {
+  def findQueryTimes(fieldName: String): QueryBuilder => collection.Seq[FLTuple] = {
     case query: RangeQueryBuilder =>
       if (query.fieldName() == fieldName) {
         Seq(

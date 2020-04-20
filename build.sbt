@@ -40,7 +40,7 @@ run in Compile ~= (old => run in Compile in uservice)
 
 val common = Seq(
   organization := "com.openshine",
-  scalaVersion := "2.12.4",
+  scalaVersion := "2.13.1",
   git.useGitDescribe := true,
   git.baseVersion := "0.10-dev"
 )

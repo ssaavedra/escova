@@ -1,18 +1,14 @@
 name := "escova-core"
 
-organization := "com.openshine"
+organization := "eu.ssaavedra"
 
-organizationName := "openshine"
-
-organizationHomepage := Some(url("http://www.openshine.com"))
+organizationName := "ssaavedra"
 
 enablePlugins(GitVersioning)
 
 libraryDependencies ++= Seq(
   "org.elasticsearch" % "elasticsearch" % "5.6.3" % "provided",
-  "org.json4s" %% "json4s-ast" % "3.5.3",
-  "org.json4s" %% "json4s-core" % "3.5.3",
-  "org.json4s" %% "json4s-native" % "3.5.3"
+  "org.json4s" %% "json4s-native" % "3.6.7"
   // Warning: Do not use Jackson due to dependency hell against
   // elasticsearch
   // as Elasticsearch does not include some jackson modules needed by
@@ -23,8 +19,8 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.0.4" % "test",
-  "org.scalactic" %% "scalactic" % "3.0.4" % "test"
+  "org.scalatest" %% "scalatest" % "3.1.1" % Test,
+  "org.scalactic" %% "scalactic" % "3.1.1" % Test
 )
 
 licenses := Seq(
@@ -35,10 +31,10 @@ developers := List(
   Developer("ssaavedra",
             "Santiago Saavedra",
             "@ssaavedra",
-            url("https://github.com/ssaavedra"))
+            url("https://gitlab.com/ssaavedra.eu"))
 )
 
 scmInfo := Some(
-  ScmInfo(url("https://github.com/openshine/escova"),
-          "git@github.com:openshine/escova.git")
+  ScmInfo(url("https://gitlab.com/ssaavedra.eu/escova"),
+          "git@gitlab.com:ssaavedra.eu/escova.git")
 )
