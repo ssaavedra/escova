@@ -91,7 +91,7 @@ other supported methods by Typesafe Config.
 ### Configuration explanation
 
 Configuration allows to customize the node cost and to enable
-black/white -listing of certain kinds of aggregations.
+allowing/forbidding of certain kinds of aggregations.
 
 You can refer to the CostConfig.scala file for reference on the
 configuration.
@@ -113,9 +113,9 @@ have nested `term`s, and `term`s and `date_histogram`s are the only
 allowed kinds of aggregations.
 
     default.maxTreeHeight: 3
-	default.whitelistChildren: ["terms", "date_histogram"]
+	default.allowlistChildren: ["terms", "date_histogram"]
 	custom.terms.defaultNodeCost: 10
-	custom.date_histogram.whitelistChildren: ["terms"]
+	custom.date_histogram.allowlistChildren: ["terms"]
 
 
 Static analysis

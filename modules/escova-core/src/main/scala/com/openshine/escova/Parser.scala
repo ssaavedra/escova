@@ -75,7 +75,7 @@ object Parser {
 
     implicit val defaultConfig = CostConfig(
       default = NodeCostConfig(
-        whitelistChildren = List("date_histogram", "terms"),
+        allowlistChildren = List("date_histogram", "terms"),
         maxTreeHeight = 3,
       ),
       custom = Map(
@@ -83,10 +83,10 @@ object Parser {
           customNodeConfig = Map(
             "bucketCountThresholds.requiredSize.op" -> "pow"
           ),
-          whitelistChildren = List("date_histogram")
+          allowlistChildren = List("date_histogram")
         ),
         "date_histogram" -> NodeCostConfig(
-          whitelistChildren = List("terms")
+          allowlistChildren = List("terms")
         )
       )
     )
@@ -196,7 +196,7 @@ object Parser {
     val configForNode = config.custom.getOrElse("root", config.default)
 
     if (children.exists(t => !configForNode.isChildAllowed(t))) {
-      // Fail fast on blacklisted children
+      // Fail fast on blocklisted children
       return RootAggregation(children.toVector, Double.MaxValue)
     }
 
@@ -218,7 +218,7 @@ object Parser {
       config.custom.getOrElse(tree.node.getName, config.default)
 
     if (tree.children.exists(t => !configForNode.isChildAllowed(t))) {
-      // Fail fast on blacklisted children
+      // Fail fast on blocklisted children
       return Double.MaxValue
     }
 

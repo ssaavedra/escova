@@ -97,8 +97,8 @@ class ParserTest extends FlatSpec with Matchers {
 
   implicit val config = CostConfig(
     default = NodeCostConfig(
-      whitelistChildren = List(),
-      blacklistChildren = List(),
+      allowlistChildren = List(),
+      blocklistChildren = List(),
     ))
 
   "parser with sample1" should "have complexity 13.0" in {
@@ -116,10 +116,10 @@ class ParserTest extends FlatSpec with Matchers {
     assert(Parser.analyze(s.source()).value === 5.0 +- 0.1)
   }
 
-  "parser with sample1" should "have maximum complexity if nodes are not whitelisted" in {
+  "parser with sample1" should "have maximum complexity if nodes are not allowlisted" in {
     implicit val config = CostConfig(
       default = NodeCostConfig(
-        whitelistChildren = List("date_histogram", "terms")
+        allowlistChildren = List("date_histogram", "terms")
       ))
     val s = Parser.parse(sample1, "idx", "type")
     assert(Parser.analyze(s.source()).value === Double.MaxValue)
